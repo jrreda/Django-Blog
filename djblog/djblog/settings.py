@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # New added
     "django.contrib.sites",
     "django.contrib.sitemaps",
+    "django.contrib.postgres",
     # Third Party
     "taggit",
     # Local
@@ -87,8 +88,12 @@ SITE_ID = 1
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "blog",
+        "USER": "blog",
+        "PASSWORD": env.str("DATABASE_PASSWORD"),
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
